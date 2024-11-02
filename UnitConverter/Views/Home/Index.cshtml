@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Unit Converter</h2>
+
+<h3>Length Conversion</h3>
+<form asp-controller="Length" asp-action="ConvertLength" method="post">
+    <input type="number" name="value" placeholder="Enter value" required />
+    <select name="from">
+        <option value="millimeter">Millimeter</option>
+        <option value="centimeter">Centimeter</option>
+        <option value="meter">Meter</option>
+        <option value="kilometer">Kilometer</option>
+        <option value="inch">Inch</option>
+        <option value="foot">Foot</option>
+        <option value="yard">Yard</option>
+        <option value="mile">Mile</option>
+    </select>
+    <span>to</span>
+    <select name="to">
+        <option value="millimeter">Millimeter</option>
+        <option value="centimeter">Centimeter</option>
+        <option value="meter">Meter</option>
+        <option value="kilometer">Kilometer</option>
+        <option value="inch">Inch</option>
+        <option value="foot">Foot</option>
+        <option value="yard">Yard</option>
+        <option value="mile">Mile</option>
+    </select>
+    <button type="submit">Convert</button>
+</form>
+
+<h3>Weight Conversion</h3>
+<form asp-controller="Weight" asp-action="ConvertWeight" method="post">
+    <input type="number" name="value" placeholder="Enter value" required />
+    <select name="from">
+        <option value="milligram">Milligram</option>
+        <option value="gram">Gram</option>
+        <option value="kilogram">Kilogram</option>
+        <option value="ounce">Ounce</option>
+        <option value="pound">Pound</option>
+    </select>
+    <span>to</span>
+    <select name="to">
+        <option value="milligram">Milligram</option>
+        <option value="gram">Gram</option>
+        <option value="kilogram">Kilogram</option>
+        <option value="ounce">Ounce</option>
+        <option value="pound">Pound</option>
+    </select>
+    <button type="submit">Convert</button>
+</form>
+
+<h3>Temperature Conversion</h3>
+<form asp-controller="Temperature" asp-action="ConvertTemperature" method="post">
+    <input type="number" name="value" placeholder="Enter value" required />
+    <select name="from">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+    <span>to</span>
+    <select name="to">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+    <button type="submit">Convert</button>
+</form>
+
+<div id="result">
+    @if (TempData["WeightResult"] != null)
+    {
+        <p>Converted Weight: @TempData["WeightResult"]</p>
+    }
+
+    @if (TempData["LengthResult"] != null)
+    {
+        <p>Converted Length: @TempData["LengthResult"]</p>
+    }
+
+    @if (TempData["TemperatureResult"] != null)
+    {
+        <p>Converted Temperature: @TempData["TemperatureResult"]</p>
+    }
+</div>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        color: #444;
+        font-size: 1.4em;
+        margin: 15px 0 10px;
+    }
+
+    #result {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #e9ecef;
+        font-size: 1.1em;
+    }
+
+        #result p {
+            margin: 0;
+            color: #333;
+        }
+
+    form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        transition: box-shadow 0.3s;
+    }
+
+        form:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    input[type="number"], select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: calc(50% - 15px);
+        margin: 5px 5px 10px 0;
+        box-sizing: border-box;
+        font-size: 1em;
+        transition: border-color 0.3s;
+    }
+
+        input[type="number"]:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+</style>
+
